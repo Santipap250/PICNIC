@@ -29,8 +29,8 @@ export default function Home() {
 
   const showToast = (message) => {
     setToast(message);
-    window.clearTimeout(window.__fruitlabToastTimer);
-    window.__fruitlabToastTimer = window.setTimeout(() => setToast(''), 2200);
+    window.clearTimeout(window.__picnicToastTimer);
+    window.__picnicToastTimer = window.setTimeout(() => setToast(''), 2200);
   };
 
   const handleAdd = (product, qty = 1) => {

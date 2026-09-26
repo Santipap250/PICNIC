@@ -1,12 +1,16 @@
 import './globals.css';
 
 export const metadata = {
-  metadataBase: new URL('https://fruitlab.example.com'),
-  title: 'ปิกนิก — Fruit Smoothies & Coffee',
+  metadataBase: new URL('https://picnic.example.com'),
+  title: 'PICNIC — Smoothies & Coffee',
   description:
-    'Premium fruit smoothies, coffee and signature drinks. Mobile-first 3D storefront.',
+    'อร่อย สดชื่น ทุกสัมผัส — Premium fruit smoothies, coffee and signature drinks. Mobile-first 3D storefront.',
   icons: {
-    icon: '/icons/favicon.svg',
+    icon: [
+      { url: '/icons/favicon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icons/favicon-64.png', sizes: '64x64', type: 'image/png' },
+    ],
+    apple: '/icons/apple-touch-icon.png',
   },
 };
 
