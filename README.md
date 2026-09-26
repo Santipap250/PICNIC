@@ -9,11 +9,20 @@ ready to wire up to a real backend later.
 - Premium dark / acid-lime visual language with glass panels and CSS-only
   "3D" drink visuals (gradients + transforms — no WebGL, no heavy JS)
 - Mobile-first responsive layout, verified for 360 / 390 / 430 / 768 / 1024 / 1440
+- Compact mobile hero: brand, product visual, headline and CTA all readable
+  near the top of the screen without a long scroll
 - Category filter, product grid, add-to-cart, quantity +/-, subtotal, cart drawer
+- Tap a product card to open a **Product Detail sheet** (bottom sheet on
+  mobile, centered modal on wider screens) with a quantity stepper before
+  adding to cart — the card's "quick add" button still adds 1 instantly
+- A real first **checkout flow**: Cart → Customer info → Order summary →
+  Confirm, ending in an honest Order Confirmation screen (see below)
 - Toast feedback on add-to-cart
+- Cart drawer, product sheet and checkout sheet all lock background scroll
+  while open, close on Escape, and animate in/out smoothly
 - `prefers-reduced-motion` respected; all motion is transform/opacity based
 - 44px-minimum touch targets, focus-visible states, skip-to-menu link,
-  `aria-live`/`aria-label`/`role="dialog"` on the cart drawer
+  `aria-live`/`aria-label`/`role="dialog"` on every drawer/sheet
 - Product data fully separate from UI (`src/data/products.js`)
 - Each product has an `image` field — `null` today, so the UI falls back to
   the CSS drink placeholder automatically; add a real photo path later with
@@ -25,16 +34,21 @@ ready to wire up to a real backend later.
 ```
 src/
   app/
-    layout.js       — root layout, metadata, viewport
-    page.js         — page orchestration (state + composition only)
-    globals.css     — all styling
+    layout.js            — root layout, metadata, viewport
+    page.js              — page orchestration (state + composition only)
+    globals.css          — all styling
   components/
     Navbar.js, Hero.js, Ticker.js, MenuSection.js, ProductCard.js,
-    ProductVisual.js, StorySection.js, Footer.js, CartDrawer.js, Toast.js
+    ProductVisual.js, StorySection.js, Footer.js,
+    CartDrawer.js        — cart list + entry to checkout
+    ProductDetailSheet.js — tap-to-open product detail + quantity picker
+    CheckoutSheet.js      — customer info → summary → confirmation
+    Toast.js
   data/
     products.js     — categories + product catalog (edit this to change menu/prices)
   lib/
     cart.js         — cart math + createOrderPayload()
+    overlay.js      — shared useBodyScrollLock / useEscapeToClose hooks
 public/
   images/           — put real product photos here later (e.g. mango.webp)
   icons/            — favicon.svg
@@ -88,14 +102,19 @@ git pull origin main --allow-unrelated-histories
 3. Nothing else changes — `ProductVisual` automatically renders the real
    photo (via `next/image`) instead of the CSS placeholder.
 
-## Connecting real checkout (Phase 2)
+## Connecting real checkout (Phase 3)
 `src/lib/cart.js` exports `createOrderPayload(cart, contact)`, which returns
-`{ items, quantities, subtotal, customer, createdAt }`. Today the checkout
-button just shows a toast; once a backend/LINE OA endpoint exists, send this
-payload from `handleCheckout` in `src/app/page.js`.
+`{ items, quantities, subtotal, customer, createdAt }`. `CheckoutSheet.js`
+already builds this payload when the shopper confirms — it just doesn't send
+it anywhere yet. Once a backend/LINE OA endpoint exists, call it from
+`handleConfirm` in `src/components/CheckoutSheet.js` and swap the
+confirmation copy from "พร้อมเชื่อมระบบรับออเดอร์จริง" to a real success/failure
+state.
 
 ## Suggested next phase
 - Real product photography + `image` fields
 - Wire `createOrderPayload()` to a real endpoint (LINE OA / order API / Sheets)
-- Optional: basic order-confirmation screen once a backend exists
+  and handle its success/error response on the confirmation screen
+- Optional: basic focus trap inside drawers/sheets (currently: initial focus
+  + Escape to close, but Tab isn't cycled back inside the dialog)
 - Optional: lint/test scripts + CI
