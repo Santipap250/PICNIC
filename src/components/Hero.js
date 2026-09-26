@@ -41,7 +41,7 @@ export default function Hero() {
         <div className="hero-copy">
           <p className="eyebrow">FRESHLY BLENDED · DAILY</p>
           <h1>
-            ปิกนิก ปั่น & ชง,
+            ปิกนิก,
             <br />
             <em>Smoothies & Coffee.</em>
           </h1>
