@@ -2,14 +2,14 @@
 // any component, so the checkout integration point is easy to find
 // and swap later (LINE OA / order API / Google Sheets / etc.).
 
-export function addItem(items, product) {
+export function addItem(items, product, qty = 1) {
   const found = items.find((item) => item.id === product.id);
   if (found) {
     return items.map((item) =>
-      item.id === product.id ? { ...item, qty: item.qty + 1 } : item
+      item.id === product.id ? { ...item, qty: item.qty + qty } : item
     );
   }
-  return [...items, { ...product, qty: 1 }];
+  return [...items, { ...product, qty }];
 }
 
 export function changeQty(items, id, delta) {
