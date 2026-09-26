@@ -15,7 +15,7 @@ export default function Footer() {
         <p>Fruit smoothies · Coffee · Signature drinks</p>
       </div>
       <div className="footer-links">
-        <span>เปิดทุกวัน 09:00–20:00</span>
+        <span>เปิดทุกวัน 09:00–16:00</span>
         <span>โทร 08X-XXX-XXXX</span>
         <span>LINE: @picnic</span>
       </div>
