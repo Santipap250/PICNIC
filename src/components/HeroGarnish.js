@@ -136,6 +136,72 @@ export default function HeroGarnish() {
         <circle cx="43" cy="36" r="2" fill="rgba(255,255,255,.6)" />
         <circle cx="92" cy="27" r="2" fill="rgba(255,255,255,.6)" />
       </svg>
+
+      <svg className="garnish garnish-grass" viewBox="0 0 80 100" aria-hidden="true">
+        <defs>
+          <linearGradient id="grassGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+            <stop offset="0%" stopColor="#2f5a15" />
+            <stop offset="100%" stopColor="#b8e85a" />
+          </linearGradient>
+        </defs>
+        <path d="M15 100 C9 70 18 40 27 14 C31 45 26 76 24 100 Z" fill="url(#grassGrad)" />
+        <path d="M40 100 C35 64 45 28 53 6 C58 42 50 74 46 100 Z" fill="url(#grassGrad)" />
+        <path d="M60 100 C55 76 63 50 69 27 C72 56 66 82 64 100 Z" fill="url(#grassGrad)" />
+      </svg>
+
+      <svg className="garnish garnish-blossom" viewBox="0 0 60 60" aria-hidden="true">
+        <defs>
+          <radialGradient id="blossomGrad" cx="50%" cy="28%" r="85%">
+            <stop offset="0%" stopColor="#f6ecff" />
+            <stop offset="100%" stopColor="#c79bea" />
+          </radialGradient>
+        </defs>
+        {[0, 72, 144, 216, 288].map((deg) => (
+          <ellipse key={deg} cx="30" cy="18" rx="7" ry="12" fill="url(#blossomGrad)" transform={`rotate(${deg} 30 30)`} />
+        ))}
+        <circle cx="30" cy="30" r="6" fill="#f0b73f" />
+      </svg>
+
+      <svg className="garnish garnish-butterfly" viewBox="0 0 140 110" aria-hidden="true">
+        <defs>
+          <linearGradient id="wingGradTop" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#ffd873" />
+            <stop offset="55%" stopColor="#f0819e" />
+            <stop offset="100%" stopColor="#b45cc9" />
+          </linearGradient>
+          <linearGradient id="wingGradBottom" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#d29bec" />
+            <stop offset="100%" stopColor="#7c5cc9" />
+          </linearGradient>
+        </defs>
+        <g className="butterfly-hover">
+          <g transform="translate(70,55)">
+            <g className="wing wing-left-top">
+              <path d="M0 0 C-30 -38 -62 -30 -60 -4 C-58 18 -30 22 0 4 Z" fill="url(#wingGradTop)" />
+              <path d="M-14 -8 C-28 -14 -40 -12 -48 -4" fill="none" stroke="rgba(255,255,255,.35)" strokeWidth="2" />
+            </g>
+            <g className="wing wing-left-bottom">
+              <path d="M0 4 C-24 20 -40 40 -22 48 C-8 52 0 30 0 8 Z" fill="url(#wingGradBottom)" />
+            </g>
+            <g className="wing wing-right-top">
+              <path d="M0 0 C30 -38 62 -30 60 -4 C58 18 30 22 0 4 Z" fill="url(#wingGradTop)" />
+              <path d="M14 -8 C28 -14 40 -12 48 -4" fill="none" stroke="rgba(255,255,255,.35)" strokeWidth="2" />
+            </g>
+            <g className="wing wing-right-bottom">
+              <path d="M0 4 C24 20 40 40 22 48 C8 52 0 30 0 8 Z" fill="url(#wingGradBottom)" />
+            </g>
+            <ellipse cx="0" cy="10" rx="3.4" ry="21" fill="#2a1b12" />
+            <circle cx="0" cy="-10" r="4" fill="#2a1b12" />
+            <path
+              d="M0 -12 C-6 -21 -9 -25 -13 -29 M0 -12 C6 -21 9 -25 13 -29"
+              stroke="#2a1b12"
+              strokeWidth="1.6"
+              fill="none"
+              strokeLinecap="round"
+            />
+          </g>
+        </g>
+      </svg>
     </>
   );
 }
