@@ -32,7 +32,7 @@ export default function Hero() {
           <div className="hero-cup-top" />
           <div className="hero-cup-body" />
           <div className="hero-cup-label">
-            FRUITLAB
+            ปิกนิก
             <br />
             <small>LIMITED EDITION</small>
           </div>

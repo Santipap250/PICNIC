@@ -2,10 +2,10 @@ export default function Navbar({ cartCount, onOpenCart }) {
   return (
     <header className="nav-wrap">
       <div className="nav glass">
-        <a className="brand" href="#top" aria-label="FRUITLAB หน้าแรก">
+        <a className="brand" href="#top" aria-label="ปิกนิก หน้าแรก">
           <span className="brand-mark">F</span>
           <span>
-            FRUITLAB<span className="brand-dot">.</span>
+            ปิกนิก<span className="brand-dot">.</span>
           </span>
         </a>
         <nav className="desktop-nav" aria-label="เมนูหลัก">

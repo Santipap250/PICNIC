@@ -9,7 +9,7 @@ export default function StorySection() {
           <div className="story-orbit" />
         </div>
         <div className="story-copy">
-          <p className="eyebrow">THE FRUITLAB IDEA</p>
+          <p className="eyebrow">THE ปิกนิก IDEA</p>
           <h2>
             ร้านเล็ก ๆ
             <br />

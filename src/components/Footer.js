@@ -5,7 +5,7 @@ export default function Footer() {
         <div className="brand footer-brand">
           <span className="brand-mark">F</span>
           <span>
-            FRUITLAB<span className="brand-dot">.</span>
+            ปิกนิก<span className="brand-dot">.</span>
           </span>
         </div>
         <p>Fruit smoothies · Coffee · Signature drinks</p>
