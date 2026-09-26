@@ -1,11 +1,15 @@
+import Image from 'next/image';
+
 export default function Navbar({ cartCount, onOpenCart }) {
   return (
     <header className="nav-wrap">
       <div className="nav glass">
-        <a className="brand" href="#top" aria-label="ปิกนิก หน้าแรก">
-          <span className="brand-mark">F</span>
+        <a className="brand" href="#top" aria-label="PICNIC หน้าแรก">
+          <span className="brand-mark">
+            <Image src="/images/logo-mark.png" alt="" fill sizes="40px" />
+          </span>
           <span>
-            ปิกนิก<span className="brand-dot">.</span>
+            PICNIC<span className="brand-dot">.</span>
           </span>
         </a>
         <nav className="desktop-nav" aria-label="เมนูหลัก">
