@@ -2,7 +2,7 @@ import './globals.css';
 
 export const metadata = {
   metadataBase: new URL('https://fruitlab.example.com'),
-  title: 'FRUITLAB — Fruit Smoothies & Coffee',
+  title: 'ปิกนิก — Fruit Smoothies & Coffee',
   description:
     'Premium fruit smoothies, coffee and signature drinks. Mobile-first 3D storefront.',
   icons: {
