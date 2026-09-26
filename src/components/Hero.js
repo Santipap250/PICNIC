@@ -41,9 +41,9 @@ export default function Hero() {
         <div className="hero-copy">
           <p className="eyebrow">FRESHLY BLENDED · DAILY</p>
           <h1>
-            Fruit,
+            ปิกนิก ปั่น & ชง,
             <br />
-            <em>but make it art.</em>
+            <em>Smoothies & Coffee.</em>
           </h1>
           <p className="hero-text">
             สมูทตี้ผลไม้ กาแฟ และซิกเนเจอร์ดริงก์ที่ตั้งใจทำให้ทั้งอร่อยและน่าจดจำ
