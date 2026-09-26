@@ -1,7 +1,10 @@
 // Product & category data — kept separate from UI components.
-// To swap in a real product photo later, just add an `image` path
-// (e.g. '/images/mango.webp') under public/images and the product
-// card will use it automatically instead of the CSS 3D placeholder.
+// To swap in a real product photo later: drop the file under
+// public/images/ and set this product's `image` field to that path
+// (e.g. '/images/mango.webp'). ProductVisual reads only this field —
+// no component ever hard-codes a filename — so when `image` is null
+// it renders the CSS 3D placeholder, and the moment a path is set it
+// renders the real photo via next/image automatically.
 
 export const categories = [
   { id: 'all', label: 'ทั้งหมด' },
@@ -21,7 +24,7 @@ export const products = [
     tone: 'mango',
     badge: 'ขายดี',
     description: 'มะม่วงหอมหวาน เนื้อเนียน ละมุนแบบไอศกรีม',
-    image: null, // e.g. '/images/mango.webp' once real photography is ready
+    image: null, // → '/images/mango.webp'
   },
   {
     id: 'berry',
@@ -32,7 +35,7 @@ export const products = [
     tone: 'berry',
     badge: 'NEW',
     description: 'เบอร์รี่เข้มข้น เปรี้ยวหวานสดชื่น กลิ่นหอมชัด',
-    image: null,
+    image: null, // → '/images/berry.webp'
   },
   {
     id: 'matcha',
@@ -43,7 +46,7 @@ export const products = [
     tone: 'matcha',
     badge: 'Signature',
     description: 'มัทฉะเข้ม หอมละมุน พร้อมโฟมนมบางเบา',
-    image: null,
+    image: null, // → '/images/matcha.webp'
   },
   {
     id: 'latte',
@@ -54,7 +57,7 @@ export const products = [
     tone: 'latte',
     badge: 'ยอดนิยม',
     description: 'เอสเปรสโซ่คั่วหอม นมเนียน และซอสบัตเตอร์สก็อตช์',
-    image: null,
+    image: null, // → '/images/latte.webp'
   },
   {
     id: 'black',
@@ -65,7 +68,7 @@ export const products = [
     tone: 'black',
     badge: 'สดชื่น',
     description: 'กาแฟดำเย็นกับซิตรัส หอมคม ดื่มง่าย',
-    image: null,
+    image: null, // → '/images/black-citrus.webp'
   },
   {
     id: 'pineapple',
@@ -76,6 +79,6 @@ export const products = [
     tone: 'pineapple',
     badge: 'สดใหม่',
     description: 'สับปะรดสด เปรี้ยวหวาน พร้อมฟองซ่าบางๆ',
-    image: null,
+    image: null, // → '/images/pineapple.webp'
   },
 ];
