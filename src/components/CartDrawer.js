@@ -2,20 +2,18 @@
 
 import { useEffect, useRef } from 'react';
 import ProductVisual from './ProductVisual';
+import { useBodyScrollLock, useEscapeToClose } from '../lib/overlay';
 
 export default function CartDrawer({ open, cart, subtotal, onClose, onChangeQty, onCheckout }) {
   const closeButtonRef = useRef(null);
 
+  useBodyScrollLock(open);
+  useEscapeToClose(open, onClose);
+
   useEffect(() => {
     if (!open) return;
     closeButtonRef.current?.focus();
-
-    function onKeyDown(event) {
-      if (event.key === 'Escape') onClose();
-    }
-    document.addEventListener('keydown', onKeyDown);
-    return () => document.removeEventListener('keydown', onKeyDown);
-  }, [open, onClose]);
+  }, [open]);
 
   if (!open) return null;
 
@@ -60,7 +58,9 @@ export default function CartDrawer({ open, cart, subtotal, onClose, onChangeQty,
                   <ProductVisual tone={item.tone} image={item.image} alt={item.name} size="mini" />
                   <div className="cart-item-main">
                     <b>{item.thai}</b>
-                    <span>฿{item.price}</span>
+                    <span>
+                      ฿{item.price} × {item.qty} <strong className="line-total">= ฿{item.price * item.qty}</strong>
+                    </span>
                     <div className="qty">
                       <button
                         type="button"

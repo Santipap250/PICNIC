@@ -1,6 +1,6 @@
 import ProductCard from './ProductCard';
 
-export default function MenuSection({ categories, products, active, onSelectCategory, onAdd }) {
+export default function MenuSection({ categories, products, active, onSelectCategory, onAdd, onOpenDetail }) {
   return (
     <section id="menu" className="menu-section">
       <div className="section-heading">
@@ -34,7 +34,7 @@ export default function MenuSection({ categories, products, active, onSelectCate
 
       <div className="product-grid">
         {products.map((product) => (
-          <ProductCard key={product.id} product={product} onAdd={onAdd} />
+          <ProductCard key={product.id} product={product} onAdd={onAdd} onOpenDetail={onOpenDetail} />
         ))}
       </div>
     </section>
