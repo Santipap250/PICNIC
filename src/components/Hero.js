@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 export default function Hero() {
   const videoRef = useRef(null);
@@ -41,9 +42,9 @@ export default function Hero() {
         <div className="hero-copy">
           <p className="eyebrow">FRESHLY BLENDED · DAILY</p>
           <h1>
-            ปิกนิก,
+            Fruit,
             <br />
-            <em>Smoothies & Coffee.</em>
+            <em>but make it art.</em>
           </h1>
           <p className="hero-text">
             สมูทตี้ผลไม้ กาแฟ และซิกเนเจอร์ดริงก์ที่ตั้งใจทำให้ทั้งอร่อยและน่าจดจำ
@@ -66,15 +67,16 @@ export default function Hero() {
           <div className="hero-ring ring-two" />
           <div className="hero-glow" />
           <div className="hero-cup">
-            <div className="hero-cup-top" />
-            <div className="hero-cup-body" />
-            <div className="hero-cup-label">
-              PICNIC
-              <br />
-              <small>LIMITED EDITION</small>
+            <div className="hero-cup-photo">
+              <Image
+                src="/images/hero-cup.png"
+                alt="แก้ว PICNIC Coffee เมนูซิกเนเจอร์"
+                fill
+                sizes="(max-width: 620px) 55vw, 260px"
+                style={{ objectFit: 'contain' }}
+                priority
+              />
             </div>
-            <div className="hero-cup-shine" />
-            <div className="hero-straw" />
           </div>
           <div className="hero-orb orb-left" />
           <div className="hero-orb orb-right" />
