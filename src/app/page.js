@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { categories, products } from '../data/products';
-import { addItem, changeQty as changeQtyIn, getCartCount, getSubtotal, createOrderPayload } from '../lib/cart';
+import { addItem, changeQty as changeQtyIn, getCartCount, getSubtotal } from '../lib/cart';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import Ticker from '../components/Ticker';
@@ -10,12 +10,16 @@ import MenuSection from '../components/MenuSection';
 import StorySection from '../components/StorySection';
 import Footer from '../components/Footer';
 import CartDrawer from '../components/CartDrawer';
+import ProductDetailSheet from '../components/ProductDetailSheet';
+import CheckoutSheet from '../components/CheckoutSheet';
 import Toast from '../components/Toast';
 
 export default function Home() {
   const [active, setActive] = useState('all');
   const [cart, setCart] = useState([]);
   const [cartOpen, setCartOpen] = useState(false);
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
+  const [detailProduct, setDetailProduct] = useState(null);
   const [toast, setToast] = useState('');
 
   const filtered = useMemo(
@@ -29,8 +33,8 @@ export default function Home() {
     window.__fruitlabToastTimer = window.setTimeout(() => setToast(''), 2200);
   };
 
-  const handleAdd = (product) => {
-    setCart((items) => addItem(items, product));
+  const handleAdd = (product, qty = 1) => {
+    setCart((items) => addItem(items, product, qty));
     showToast(`${product.thai} เพิ่มในตะกร้าแล้ว`);
   };
 
@@ -38,15 +42,15 @@ export default function Home() {
     setCart((items) => changeQtyIn(items, id, delta));
   };
 
-  const handleCheckout = () => {
-    // Demo-only: builds the payload a real backend/LINE OA integration
-    // would receive, but doesn't send it anywhere yet.
-    const payload = createOrderPayload(cart);
-    if (process.env.NODE_ENV !== 'production') {
-      // eslint-disable-next-line no-console
-      console.info('createOrderPayload()', payload);
-    }
-    showToast('Demo พร้อมเชื่อม LINE / API ออเดอร์ได้ในขั้นถัดไป');
+  const handleOpenCheckout = () => {
+    setCartOpen(false);
+    setCheckoutOpen(true);
+  };
+
+  const handleOrderConfirmed = () => {
+    // Demo-only: the order payload was built and shown back to the
+    // shopper by CheckoutSheet; clear the cart as if it were placed.
+    setCart([]);
   };
 
   const cartCount = getCartCount(cart);
@@ -69,6 +73,7 @@ export default function Home() {
         active={active}
         onSelectCategory={setActive}
         onAdd={handleAdd}
+        onOpenDetail={setDetailProduct}
       />
 
       <StorySection />
@@ -82,7 +87,17 @@ export default function Home() {
         subtotal={subtotal}
         onClose={() => setCartOpen(false)}
         onChangeQty={handleChangeQty}
-        onCheckout={handleCheckout}
+        onCheckout={handleOpenCheckout}
+      />
+
+      <ProductDetailSheet product={detailProduct} onClose={() => setDetailProduct(null)} onAdd={handleAdd} />
+
+      <CheckoutSheet
+        open={checkoutOpen}
+        cart={cart}
+        subtotal={subtotal}
+        onClose={() => setCheckoutOpen(false)}
+        onConfirmed={handleOrderConfirmed}
       />
     </main>
   );
