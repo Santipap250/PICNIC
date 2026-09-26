@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
+import HeroGarnish from './HeroGarnish';
 
 export default function Hero() {
   const videoRef = useRef(null);
@@ -78,8 +79,7 @@ export default function Hero() {
               />
             </div>
           </div>
-          <div className="hero-orb orb-left" />
-          <div className="hero-orb orb-right" />
+          <HeroGarnish />
           <div className="hero-badge">
             <b>01</b>
             <span>
