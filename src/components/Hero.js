@@ -67,6 +67,7 @@ export default function Hero() {
           <div className="hero-ring ring-one" />
           <div className="hero-ring ring-two" />
           <div className="hero-glow" />
+          <p className="hero-wordmark">ปิกนิก</p>
           <div className="hero-cup">
             <div className="hero-cup-photo">
               <Image
