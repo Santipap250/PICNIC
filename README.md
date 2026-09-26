@@ -47,6 +47,15 @@ headline text stays readable. To swap in different footage later, replace
 that file (keep it muted, short, and re-compressed — see the ffmpeg note
 below) and regenerate a matching poster frame.
 
+## Hero cup photo
+The hero's floating cup graphic is now your real product shot
+(`public/images/hero-cup.png`, transparent background, trimmed to just the
+cup) instead of the old flat-color CSS mockup. It sits in the same
+position/rotation/drop-shadow as before — to swap it for a different product
+shot later, replace that file with another transparent-background PNG of
+similar proportions (roughly tall portrait, cup centered) and nothing else
+needs to change.
+
 ## Logo
 The round PICNIC logo you sent was cropped tight to just the circular badge
 (the side berry/lime decorations were cropped out) and saved as:
