@@ -1,7 +1,7 @@
 import './globals.css';
 
 export const metadata = {
-  metadataBase: new URL('https://picnic.example.com'),
+  metadataBase: new URL('https://coffruitpiknik.vercel.app'),
   title: 'PICNIC — Smoothies & Coffee',
   description:
     'อร่อย สดชื่น ทุกสัมผัส — Premium fruit smoothies, coffee and signature drinks. Mobile-first 3D storefront.',
