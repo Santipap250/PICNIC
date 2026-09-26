@@ -5,11 +5,6 @@ import ProductVisual from './ProductVisual';
 import { createOrderPayload } from '../lib/cart';
 import { useBodyScrollLock, useEscapeToClose } from '../lib/overlay';
 
-// First real checkout step: Cart → Customer info → Order summary → Confirm.
-// createOrderPayload() is the single integration point for a future
-// backend — today Confirm only builds that payload and shows it back
-// to the shopper; nothing is sent anywhere yet, and the confirmation
-// screen says so plainly rather than pretending an order was placed.
 export default function CheckoutSheet({ open, cart, subtotal, onClose, onConfirmed }) {
   const [step, setStep] = useState('info');
   const [contact, setContact] = useState({ name: '', phone: '', note: '' });
@@ -60,7 +55,7 @@ export default function CheckoutSheet({ open, cart, subtotal, onClose, onConfirm
         <div className="cart-head">
           <div>
             <p className="eyebrow">{stepLabel}</p>
-            <h3>{step === 'confirmed' ? 'รับออเดอร์แล้ว' : 'Checkout'}</h3>
+            <h3>{step === 'confirmed' ? 'สรุปออเดอร์พร้อมแล้ว' : 'Checkout'}</h3>
           </div>
           <button type="button" className="icon-button" onClick={onClose} aria-label="ปิดหน้าต่างสั่งซื้อ">
             ×
@@ -138,7 +133,7 @@ export default function CheckoutSheet({ open, cart, subtotal, onClose, onConfirm
                 ← แก้ไขข้อมูล
               </button>
               <button type="button" className="checkout-button" onClick={handleConfirm}>
-                ยืนยันสั่งซื้อ
+                ยืนยันสรุปออเดอร์
               </button>
             </div>
           </>
@@ -149,10 +144,9 @@ export default function CheckoutSheet({ open, cart, subtotal, onClose, onConfirm
             <div className="confirm-mark" aria-hidden="true">
               ✓
             </div>
-            <p className="confirm-title">ได้รับข้อมูลออเดอร์ของคุณแล้ว</p>
+            <p className="confirm-title">สร้างสรุปออเดอร์เรียบร้อย</p>
             <p className="confirm-note">
-              ขั้นตอนนี้เป็นดีโม่ฝั่ง frontend เท่านั้น — <b>พร้อมเชื่อมระบบรับออเดอร์จริง</b>{' '}
-              (LINE OA / API ร้าน) ในขั้นถัดไป ยังไม่มีการส่งออเดอร์ไปยัง backend ใด ๆ
+              ขั้นตอนนี้ยังเป็น frontend demo — ข้อมูลยังไม่ได้ถูกส่งไปยังร้านหรือ backend จริง
             </p>
             {payload && (
               <p className="confirm-ref">

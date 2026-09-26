@@ -9,7 +9,7 @@ export default function Footer() {
             <Image src="/images/logo-mark.png" alt="" fill sizes="40px" />
           </span>
           <span>
-            (ปิกนิก)PICNIC<span className="brand-dot">.</span>
+            PICNIC<span className="brand-dot">.</span>
           </span>
         </div>
         <p>Fruit smoothies · Coffee · Signature drinks</p>

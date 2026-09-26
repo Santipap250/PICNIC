@@ -10,14 +10,11 @@ export default function Hero() {
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-    // Belt-and-braces: some browsers only honor autoplay when `muted`
-    // is set as a DOM property, not just the JSX/HTML attribute.
     video.muted = true;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!prefersReducedMotion) {
       video.play().catch(() => {
-        // Autoplay can still be blocked by the browser — the poster
-        // image stays visible as a perfectly fine static fallback.
+        // Poster remains visible when autoplay is blocked.
       });
     }
   }, []);
@@ -31,7 +28,7 @@ export default function Hero() {
           muted
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
           poster="/images/hero-poster.jpg"
         >
           <source src="/videos/picnic-hero.mp4" type="video/mp4" />
@@ -72,7 +69,7 @@ export default function Hero() {
             <div className="hero-cup-photo">
               <Image
                 src="/images/hero-cup.png"
-                alt="แก้ว PICNIC Coffee เมนูซิกเนเจอร์"
+                alt=""
                 fill
                 sizes="(max-width: 620px) 55vw, 260px"
                 style={{ objectFit: 'contain' }}

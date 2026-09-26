@@ -17,13 +17,12 @@ export default function MenuSection({ categories, products, active, onSelectCate
         </p>
       </div>
 
-      <div className="category-row" role="tablist" aria-label="หมวดหมู่เมนู">
+      <div className="category-row" aria-label="กรองหมวดหมู่เมนู">
         {categories.map((cat) => (
           <button
             key={cat.id}
             type="button"
-            role="tab"
-            aria-selected={active === cat.id}
+            aria-pressed={active === cat.id}
             className={active === cat.id ? 'active' : ''}
             onClick={() => onSelectCategory(cat.id)}
           >
